@@ -1,0 +1,12 @@
+{
+    "name": "demo/pinkbakery",
+    "autoload": {
+        "psr-4": {
+            "Demo\\Pinkbakery\\": "src/"
+        }
+    },
+    "authors": [],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
