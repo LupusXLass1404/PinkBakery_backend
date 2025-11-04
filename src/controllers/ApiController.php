@@ -28,7 +28,7 @@ class ApiController {
     // create
     public function create($request, $response) {
         $data = $request->getParsedBody();
-        $id = $this->model->create($data);
+        $id = $this->model->save($data);
         $response->getBody()->write(json_encode(['id' => $id]));
         return $response->withHeader('Content-Type', 'application/json');
     }
@@ -36,14 +36,15 @@ class ApiController {
     // update
     public function update($request, $response, $args) {
         $data = $request->getParsedBody();
-        $this->model->update($args['id'], $data);
+        $data['id'] = $args['id'];
+        $id = $this->model->save($data);
         $response->getBody()->write(json_encode(['status' => 'updated']));
         return $response->withHeader('Content-Type', 'application/json');
     }
 
     // delete
     public function delete($request, $response, $args) {
-        $this->model->delete($args['id']);
+        $this->model->del($args['id']);
         $response->getBody()->write(json_encode(['status' => 'deleted']));
         return $response->withHeader('Content-Type', 'application/json');
     }

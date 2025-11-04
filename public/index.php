@@ -9,6 +9,10 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
 
+// 解析JSON
+$app->addBodyParsingMiddleware();
+
+// 顯示錯誤訊息（開發用）
 $app->addRoutingMiddleware();
 
 // 讀取 .env
